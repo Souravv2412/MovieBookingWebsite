@@ -1,14 +1,12 @@
 <?php
-    $host = "movietheatredb-singh-f06c.d.aivencloud.com";
-    $user = "avnadmin";                     
-    $pass = "AVNS_eMsllQY_b9oaug9NZiT";                                  
-    $db = "defaultdb";
-    $port = 27000;
-     $con = mysqli_connect($host, $user, $pass, $db, $port)or die(mysql_error());
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
+$db   = getenv('DB_NAME');
+$port = getenv('DB_PORT');
 
-     if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$con = mysqli_connect($host, $user, $pass, $db, $port);
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
 ?>
-
